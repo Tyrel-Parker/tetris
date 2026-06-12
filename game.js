@@ -315,7 +315,7 @@ document.addEventListener('touchend', e => {
     if (dy > 30) {
       hardDrop();
     } else if (dy < -30) {
-      tryRotate(1);
+      tryRotate(-1);
     }
   }
 }, { passive: false });
