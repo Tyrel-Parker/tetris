@@ -477,7 +477,7 @@ function startGame() {
 
 // === UPDATE ===
 function update(dt) {
-  if (gameState !== 'playing' || !currentPiece) return;
+  if (gameState !== 'playing') return;
 
   // Line-clear flash — pause all movement
   if (flashTimer > 0) {
@@ -485,6 +485,8 @@ function update(dt) {
     if (flashTimer <= 0) clearLines();
     return;
   }
+
+  if (!currentPiece) return;
 
   // DAS / ARR
   if (dasDir !== 0 && controlMode === 'keys') {
