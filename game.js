@@ -298,7 +298,7 @@ document.addEventListener('touchend', e => {
     return;
   }
 
-  if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+  if (Math.abs(dx) < 15 && Math.abs(dy) < 15) {
     if (gameState === 'playing') tryRotate(1);
     else handleStart();
     return;
@@ -307,15 +307,15 @@ document.addEventListener('touchend', e => {
   if (gameState !== 'playing' || flashTimer > 0) { handleStart(); return; }
 
   if (Math.abs(dx) > Math.abs(dy)) {
+    // Horizontal: move left/right
     if (dx > 20)  tryMove(1, 0);
     if (dx < -20) tryMove(-1, 0);
   } else {
-    if (dy > 20) {
-      const cells = Math.max(1, Math.floor(Math.abs(dy) / CELL));
-      for (let i = 0; i < cells; i++) { if (!tryMove(0, 1)) break; score++; }
-      updateHUD();
-    } else if (dy < -40) {
+    // Vertical: swipe down = hard drop, swipe up = rotate
+    if (dy > 30) {
       hardDrop();
+    } else if (dy < -30) {
+      tryRotate(1);
     }
   }
 }, { passive: false });
