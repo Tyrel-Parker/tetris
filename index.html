@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>TETRIS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="shell">
+  <div id="title">TETRIS</div>
+  <div id="hud">
+    <span id="score-block">SCORE: <span id="score-val">0</span></span>
+    <button id="mode-btn">⌨ KEYS</button>
+    <span id="hud-right">
+      <span id="level-block">LEVEL: <span id="level-val">1</span></span>
+      <button id="help-btn">
+        <svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true">
+          <rect x="0" y="0" width="4" height="16" fill="currentColor"/>
+          <rect x="8" y="0" width="4" height="16" fill="currentColor"/>
+        </svg>
+      </button>
+    </span>
+  </div>
+  <canvas id="c"></canvas>
+  <div id="message"></div>
+  <div id="tilt-indicator"></div>
+  <div id="error-log" style="font-family:monospace;font-size:10px;color:#ff4444;background:#1a0000;padding:4px 8px;max-width:560px;width:100%;word-break:break-all;display:none;max-height:80px;overflow-y:auto;"></div>
+  <div id="version-num" style="font-family:'Press Start 2P',monospace;font-size:7px;color:#333;letter-spacing:1px;margin-top:4px;">v1.0</div>
+</div>
+
+<div id="help-overlay">
+  <div id="help-modal">
+    <button id="help-close">✕ CLOSE</button>
+    <div class="help-title">HOW TO PLAY</div>
+
+    <div class="help-heading">CONTROLS</div>
+    <div class="help-row"><span>KEYS MODE</span><span>ARROW KEYS / WASD</span></div>
+    <div class="help-row"><span>SWIPE MODE</span><span>SWIPE ON SCREEN</span></div>
+    <div class="help-row"><span>TILT MODE</span><span>TILT YOUR DEVICE</span></div>
+    <div class="help-mode-hint">USE THE <span id="mode-hint-btn">⌨ KEYS</span> BUTTON TO SWITCH MODES</div>
+
+    <div class="help-heading">KEY BINDINGS</div>
+    <div class="help-row"><span>← / → or A / D</span><span>MOVE</span></div>
+    <div class="help-row"><span>↑ or W or X</span><span>ROTATE CW</span></div>
+    <div class="help-row"><span>Z</span><span>ROTATE CCW</span></div>
+    <div class="help-row"><span>↓ or S</span><span>SOFT DROP</span></div>
+    <div class="help-row"><span>SPACE</span><span>HARD DROP</span></div>
+
+    <div class="help-heading">OBJECTIVE</div>
+    <div class="help-row"><span>CLEAR LINES</span><span>SCORE POINTS</span></div>
+    <div class="help-row"><span>EVERY 10 LINES</span><span>LEVEL UP</span></div>
+
+    <div class="help-heading">SCORING</div>
+    <div class="help-row"><span>1 LINE</span><span>100 × LEVEL</span></div>
+    <div class="help-row"><span>2 LINES</span><span>300 × LEVEL</span></div>
+    <div class="help-row"><span>3 LINES</span><span>500 × LEVEL</span></div>
+    <div class="help-row"><span>4 LINES (TETRIS)</span><span>800 × LEVEL</span></div>
+    <div class="help-row"><span>HARD DROP</span><span>2 PTS / CELL</span></div>
+    <div class="help-row"><span>SOFT DROP</span><span>1 PT / CELL</span></div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

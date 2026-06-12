@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --black:  #0a0a0f;
+  --yellow: #FFD700;
+  --cyan:   #00FFFF;
+  --red:    #FF0000;
+  --white:  #FFFFFF;
+  --dim:    #444466;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Press Start 2P', monospace;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+#shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  gap: 10px;
+  padding: 8px;
+}
+
+#title {
+  font-size: 18px;
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan), 0 0 20px var(--cyan);
+  letter-spacing: 4px;
+  flex-shrink: 0;
+}
+
+#hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 560px;
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+#hud-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background: transparent;
+  border: 1px solid var(--dim);
+  color: var(--white);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+button:hover { border-color: var(--cyan); color: var(--cyan); }
+button.tilt-active { border-color: var(--yellow); color: var(--yellow); }
+button.help-highlight { border-color: var(--yellow); color: var(--yellow); animation: pulse 0.6s infinite alternate; }
+
+@keyframes pulse { to { opacity: 0.4; } }
+
+canvas {
+  display: block;
+  image-rendering: pixelated;
+  max-width: 100%;
+  max-height: calc(100vh - 100px);
+}
+
+#message {
+  font-size: 8px;
+  color: var(--cyan);
+  min-height: 14px;
+  flex-shrink: 0;
+}
+
+#tilt-indicator {
+  font-size: 7px;
+  color: var(--dim);
+  min-height: 12px;
+  flex-shrink: 0;
+}
+
+/* Help overlay */
+#help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+#help-overlay.open { display: flex; }
+
+#help-modal {
+  background: #12121a;
+  border: 2px solid var(--dim);
+  padding: 20px;
+  max-width: 480px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#help-close {
+  align-self: flex-end;
+  margin-bottom: 4px;
+  font-size: 8px;
+}
+
+.help-title {
+  font-size: 11px;
+  color: var(--cyan);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.help-heading {
+  font-size: 8px;
+  color: var(--yellow);
+  margin-top: 8px;
+  border-bottom: 1px solid var(--dim);
+  padding-bottom: 4px;
+}
+
+.help-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  color: #aaaacc;
+  padding: 2px 0;
+}
+
+.help-mode-hint {
+  font-size: 6px;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+#mode-hint-btn {
+  color: var(--yellow);
+  border: none;
+  font-size: 6px;
+  padding: 0;
+}
